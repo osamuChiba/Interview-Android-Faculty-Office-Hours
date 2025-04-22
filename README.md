@@ -1,2 +1,4 @@
 # Interview-Android-Faculty-Office-Hours
-Sort Office Hours by the days of the week (Sunday first).  And then show on New York time.
+1) Sort Office Hours by the days of the week.
+2) Show Sunday first.  
+3) Show on New York time.
