@@ -5,6 +5,7 @@ import org.junit.Assert.*
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.Types
+import edu.wgu.faculty.office.hours.misc.OfficeHourComparator
 import edu.wgu.faculty.office.hours.models.OfficeHourUiState
 import edu.wgu.faculty.office.hours.models.ShiftResponse
 import edu.wgu.faculty.office.hours.models.toUiState
@@ -14,7 +15,6 @@ class OfficeHoursTest {
     private val listType =
         Types.newParameterizedType(List::class.java, ShiftResponse::class.java)
     private val adapter: JsonAdapter<List<ShiftResponse>> = moshi.adapter(listType)
-    // Don't worry about !!
     private val officeHoursResponse = adapter.fromJson(officeHours)!!
 
     private fun toUiStates(): List<OfficeHourUiState> {
@@ -29,6 +29,18 @@ class OfficeHoursTest {
         assertEquals(officeHoursResponse.size, 7)
 
         val officeHours = toUiStates()
+
+        officeHours.forEach { officeHour ->
+            println("${officeHour.dayOfWeekShort} ${officeHour.officeHour}")
+        }
+    }
+
+    @Test
+    fun correctOrder() {
+        // Just so we can run this as a test...
+        assertEquals(officeHoursResponse.size, 7)
+
+        val officeHours = toUiStates().sortedWith(OfficeHourComparator) // ← Answer for the Question 1
 
         officeHours.forEach { officeHour ->
             println("${officeHour.dayOfWeekShort} ${officeHour.officeHour}")

@@ -1,7 +1,9 @@
 package edu.wgu.faculty.office.hours.models
 
 import edu.wgu.faculty.office.hours.misc.ISO_TIME_AMPM
+import edu.wgu.faculty.office.hours.misc.newYorkZoneId
 import edu.wgu.faculty.office.hours.misc.standardOffset
+import edu.wgu.faculty.office.hours.misc.standardOffsetOf
 import edu.wgu.faculty.office.hours.misc.toLocalTime
 import edu.wgu.faculty.office.hours.misc.toString
 import edu.wgu.faculty.office.hours.misc.toZonedDateTime
@@ -34,6 +36,9 @@ data class OfficeHourEntity(
                 inputFormat = "HHmm",
                 outputFormat = ISO_TIME_AMPM,
                 offsetHours = offsetHours,
+                // ← Answer for the Question 3
+                // normalized() does not do anything for those countries with no daylight savings.
+                outputZoneId = standardOffsetOf(newYorkZoneId).normalized()
             )
         }
 
@@ -47,6 +52,8 @@ data class OfficeHourEntity(
                 inputFormat = "HHmm",
                 outputFormat = ISO_TIME_AMPM,
                 offsetHours = offsetHours,
+                // ← Answer for the Question 3
+                outputZoneId = standardOffsetOf(newYorkZoneId).normalized()
             )
         }
 
