@@ -16,7 +16,7 @@ val standardOffset: ZoneOffset
         return rules.getStandardOffset(instant)
     }
 
-fun standardOffsetFrom(zoneId: ZoneId): ZoneOffset {
+fun standardOffsetOf(zoneId: ZoneId): ZoneOffset {
     val rules = zoneId.rules
     val instant = Instant.now()
 
