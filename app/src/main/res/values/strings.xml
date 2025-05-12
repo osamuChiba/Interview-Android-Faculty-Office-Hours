@@ -3,4 +3,5 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="titlepreferences">Manage your call recording preferences: WGU and its affiliates may record all calls for quality and training purposes. You may opt in our out of recorded calls at any time using the toggle below.</string>
 </resources>
